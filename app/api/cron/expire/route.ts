@@ -1,8 +1,9 @@
+export const dynamic = "force-dynamic";
+
 import { NextRequest, NextResponse } from "next/server";
 import { releaseExpiredReservations } from "@/lib/expiry";
 
 export async function GET(req: NextRequest) {
-  // Vercel Cron passes an Authorization header with the CRON_SECRET
   const authHeader = req.headers.get("authorization");
   if (
     process.env.CRON_SECRET &&
